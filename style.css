@@ -122,7 +122,7 @@ header {
 .choice-list ul {
   list-style: none;
   cursor: pointer;
-  padding-left: 10px;
+  padding-left: 5%;
   width: 100%;
 }
 .choice-list li {
@@ -211,5 +211,8 @@ header {
   }
   .choice-list li {
     width: 90%;
+  }
+  .choice-list ul {
+    padding-left: 10px;
   }
 }
