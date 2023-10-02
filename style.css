@@ -144,28 +144,24 @@ header {
 
 .footer {
   height: 30vh;
-  width: 50%;
+  width: 60%;
   display: flex;
   margin: auto;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
 }
 .button {
   font-size: 1.25rem;
   font-weight: 800;
   height: 60px;
-  width: 40%;
+  width: 25%;
   background: linear-gradient(#36d0dc, #5b87e5);
   color: #fff;
   outline: none;
   border: none;
   cursor: pointer;
-  display: flex;
-  justify-content: center;
   border-radius: 50rem;
-  align-items: center;
   transition: all 0.3s ease-in-out;
-  margin: auto;
 }
 .footer img {
   width: 20px;

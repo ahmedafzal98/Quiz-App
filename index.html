@@ -52,39 +52,23 @@
       <span>Fill out this Tirnva quiz for fun!</span>
       <div class="progress"></div>
       <div class="content">
-        <span>QUESTION 1/4</span>
+        <span class="question-length"></span>
       </div>
 
-      <h1>Make a Multiple Choice Test Template Using Excel?</h1>
+      <h1 class="question"></h1>
 
       <div class="choices-content">
         <form class="choice-list">
-          <ul>
-            <li>
-              <input type="radio" id="opt_1" name="radio1" value="GFG" />
-              <label>Activate Developer Tab</label>
-            </li>
-            <li>
-              <input type="radio" id="opt_1" name="radio1" value="GFG" />
-              <label>Activate Developer Tab</label>
-            </li>
-            <li>
-              <input type="radio" id="opt_1" name="radio1" value="GFG" />
-              <label>Activate Developer Tab</label>
-            </li>
-            <li>
-              <input type="radio" id="opt_1" name="radio1" value="GFG" />
-              <label>Activate Developer Tab</label>
-            </li>
-          </ul>
+          <ul class="choice-container"></ul>
         </form>
       </div>
     </div>
 
     <div class="footer">
-      <button class="button active">NEXT QUESTION</button>
+      <button class="button btnPrevious">PREVIOUS QUESTION</button>
+      <button class="button btnNext">NEXT QUESTION</button>
     </div>
 
-    <script src="main.js"></script>
+    <script type="module" src="main.js"></script>
   </body>
 </html>
