@@ -9,6 +9,7 @@ const quizData = [
       { text: "Madrid" },
     ],
     answerIndex: 0,
+    selectedIndex: null,
   },
   {
     id: "q2",
@@ -20,6 +21,7 @@ const quizData = [
       { text: "Saturn" },
     ],
     answerIndex: 0,
+    selectedIndex: null,
   },
   {
     id: "q3",
@@ -31,6 +33,7 @@ const quizData = [
       { text: "Hippopotamus" },
     ],
     answerIndex: 0,
+    selectedIndex: null,
   },
   {
     id: "q4",
@@ -42,6 +45,7 @@ const quizData = [
       { text: "Hydrogen" },
     ],
     answerIndex: 1,
+    selectedIndex: null,
   },
   {
     id: "q5",
@@ -53,6 +57,7 @@ const quizData = [
       { text: "Leo Tolstoy" },
     ],
     answerIndex: 0,
+    selectedIndex: null,
   },
   {
     id: "q6",
@@ -64,6 +69,7 @@ const quizData = [
       { text: "Lung" },
     ],
     answerIndex: 2,
+    selectedIndex: null,
   },
   {
     id: "q7",
@@ -75,12 +81,14 @@ const quizData = [
       { text: "South Korea" },
     ],
     answerIndex: 2,
+    selectedIndex: null,
   },
   {
     id: "q8",
     question: "What is the chemical symbol for gold?",
     options: [{ text: "Au" }, { text: "Ag" }, { text: "Fe" }, { text: "Cu" }],
     answerIndex: 0,
+    selectedIndex: null,
   },
   {
     id: "q9",
@@ -92,6 +100,7 @@ const quizData = [
       { text: "Michelangelo" },
     ],
     answerIndex: 0,
+    selectedIndex: null,
   },
   {
     id: "q10",
@@ -103,6 +112,7 @@ const quizData = [
       { text: "Mount Fuji" },
     ],
     answerIndex: 1,
+    selectedIndex: null,
   },
 ];
 export default quizData;

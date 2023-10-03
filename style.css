@@ -141,6 +141,9 @@ header {
   margin-left: 20px;
   color: #000a38;
 }
+.choice-container .selected {
+  background-color: #e9e9e9;
+}
 
 .footer {
   height: 30vh;
