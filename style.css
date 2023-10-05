@@ -84,6 +84,17 @@ header {
   align-items: center;
   border-radius: 0.5rem;
 }
+.results {
+  height: 30vh;
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.results .button {
+  width: 50%;
+  margin-top: 20px;
+}
 .containerr h2 {
   font-family: "Cabin", sans-serif;
   font-weight: bold;
@@ -131,6 +142,7 @@ header {
   padding: 1rem;
   margin: 1rem;
   align-items: center;
+  transition: all 0.2s ease-in-out;
   background-color: #fbfbfb;
   border-radius: 50rem;
   font-size: 1.1rem;
@@ -175,7 +187,6 @@ header {
 .footer :hover {
   background: linear-gradient(to right, #5b87e5, #36d0dc);
   color: #000;
-  background-color: green;
 }
 @media screen and (max-width: 60rem) {
   header {

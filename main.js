@@ -1,29 +1,35 @@
 import QuizData from "./data.js";
 
 let counter = 0;
+let correctAns = 0;
 let listContainer;
 let liElement;
 let choiceItems;
+let question;
+
+const buttonNext = document.querySelector(".btnNext");
+const buttonPrev = document.querySelector(".btnPrevious");
 
 function loadData() {
   displayRemainingQuest();
 }
 function displayRemainingQuest() {
   let remainingQuestion = document.querySelector(".question-length");
-  remainingQuestion.innerHTML = `QUESTION ${counter} / ${QuizData.length}`;
+  remainingQuestion.innerHTML = `QUESTION ${counter} / ${QuizData.length - 1}`;
 
   displayQuestion();
 }
 function displayQuestion() {
-  let question = document.querySelector(".question");
-  question.innerText = QuizData[counter].question;
-  createElementsAndTypes();
+  if (counter < 11) {
+    question = document.querySelector(".question");
+    question.innerText = QuizData[counter].question;
+    createElementsAndTypes();
+  }
 }
 function createElementsAndTypes() {
   let choices = QuizData[counter].options;
   let isNull = QuizData[counter].selectedIndex == null;
 
-  console.log(counter, isNull);
   for (const choice of choices) {
     let inputRadio = document.createElement("input");
     liElement = document.createElement("li");
@@ -48,11 +54,6 @@ function appendElements(liElement, inputRadio, label) {
   listContainer.appendChild(liElement);
 }
 
-const buttonNext = document.querySelector(".btnNext");
-const buttonPrev = document.querySelector(".btnPrevious");
-buttonNext.addEventListener("click", nextQuestion);
-buttonPrev.addEventListener("click", prevQuestion);
-
 function btnFunctionality() {
   if (listContainer.hasChildNodes()) {
     let element = listContainer.children;
@@ -62,6 +63,7 @@ function btnFunctionality() {
     ulElement.classList.add("choice-container");
     formData.appendChild(ulElement);
     loadData();
+    // disableQuestion();
   }
 }
 
@@ -85,6 +87,9 @@ function onOptionClick(item, index) {
   saveSelectedOption(index, choiceList, radioList);
 }
 
+buttonNext.addEventListener("click", nextQuestion);
+buttonPrev.addEventListener("click", prevQuestion);
+
 function saveSelectedOption(index, choiceList, radioList) {
   let selectedOption = choiceList[index];
   let radio = radioList[index];
@@ -103,20 +108,79 @@ function getChoiceList() {
 }
 function nextQuestion() {
   counter++;
-  btnFunctionality();
-  // disableQuestion();
+  if (counter < 11) {
+    btnFunctionality();
+  }
+  disableQuestion();
+
+  let btnText = buttonNext.innerHTML;
+  if (btnText === "END QUIZ") {
+    buttonNext.addEventListener("click", showResults);
+  }
 }
 function prevQuestion() {
-  btnFunctionality();
-  // disableQuestion();
   counter--;
+  btnFunctionality();
+  disableQuestion();
 }
 function disableQuestion() {
-  if (counter < 1) {
-    buttonPrev.disabled = true;
-  } else if (counter > 1) {
+  if (counter >= 10) {
+    // buttonNext.disabled = false;
     buttonPrev.disabled = false;
+    buttonNext.innerHTML = "END QUIZ";
+  } else if (counter < 1) {
+    buttonPrev.disabled = true;
+    buttonNext.disabled = false;
+    buttonNext.innerHTML = "NEXT QUESTION";
+  } else if (counter < 10) {
+    buttonNext.disabled = false;
+    buttonPrev.disabled = false;
+    buttonNext.innerHTML = "NEXT QUESTION";
   }
+}
+
+function showResults() {
+  QuizData.forEach((item) => {
+    if (item.selectedIndex === item.answerIndex) {
+      correctAns++;
+    }
+  });
+  listContainer.style.display = "none";
+  question.style.display = "none";
+  let results = document.querySelector(".results");
+  let footer = document.querySelector(".footer");
+  let span = document.querySelectorAll("span")[3];
+  let percentage = ((correctAns / QuizData.length) * 100).toFixed(2);
+  let feedback;
+  if (percentage >= 0 && percentage <= 20) {
+    feedback = "Keep Learning!";
+  } else if (percentage >= 21 && percentage <= 40) {
+    feedback = "Progressing!";
+  } else if (percentage >= 41 && percentage <= 60) {
+    feedback = "Good Effort!";
+  } else if (percentage >= 61 && percentage <= 80) {
+    feedback = "Well Done!";
+  } else {
+    feedback = "Excellent!";
+  }
+  span.innerText = `"You scored ${correctAns} out of 11 (${percentage}%) - ${feedback}"`;
+  footer.style.display = "none";
+  results.style.display = "flex";
+}
+// quizTimer(20);
+
+function quizTimer(timeRemaining) {
+  let timer = document.querySelectorAll("h3")[1];
+  console.log(timer);
+  setInterval(() => {
+    if (timeRemaining != 0) {
+      timeRemaining--;
+      timer.innerText = timeRemaining;
+    } else {
+      showResults();
+      return;
+    }
+  }, 1000);
 }
 
 loadData();

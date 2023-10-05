@@ -114,5 +114,17 @@ const quizData = [
     answerIndex: 1,
     selectedIndex: null,
   },
+  {
+    id: "q11",
+    question: "Which gas is most abundant in the Earth's atmosphere?",
+    options: [
+      { text: "Oxygen" },
+      { text: "Carbon Dioxide" },
+      { text: "Nitrogen" },
+      { text: "Hydrogen" },
+    ],
+    answerIndex: 2,
+    selectedIndex: null,
+  },
 ];
 export default quizData;
