@@ -13,7 +13,7 @@ const feedbackSpan = document.querySelectorAll("span")[3];
 // Quiz State
 let counter = 0;
 let correctAns = 0;
-let timeRemaining = 20;
+let timeRemaining = 60;
 
 // Initialize the quiz
 function initQuiz() {
